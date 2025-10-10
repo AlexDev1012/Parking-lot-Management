@@ -1,0 +1,25 @@
+.loading {
+  width: 100vw;
+  height: 100%;
+  background-color: #EEEEEE;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: #000;
+  padding-top: 45vh;
+  animation: visibility 0ms 5s forwards, opacity 1s 4s forwards;
+}
+
+@keyframes opacity {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+@keyframes visibility {
+  from {visibility: visible;}
+  to {visibility: hidden;}
+}

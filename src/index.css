@@ -1,0 +1,324 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.pointer-events-none-all * {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 1px #222; */
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@keyframes loading {
+  100% {
+    rotate: 360deg;
+  }
+}
+
+.loading-icon {
+  animation: 1s linear 0s infinite normal forwards running loading;
+}
+
+.p-column-header-content {
+  display: flex;
+  justify-content: center;
+}
+
+tr td {
+  text-align: center;
+}
+
+button.p-button {
+  background-color: #3b82f6;
+  padding: 8px 16px;
+  color: white;
+  margin: 2px;
+}
+button.p-button:hover {
+  opacity: 0.8;
+}
+button.p-button.p-danger {
+  background-color: #f63b3b;
+}
+button.p-button.p-success {
+  background-color: #16a34a;
+}
+button.p-button.p-info {
+  background-color: #0ea5e9;
+}
+input.p-dropdown-filter {
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+.p-datepicker-next,
+.p-datepicker-prev {
+  display: none;
+}
+
+.p-datepicker-year,
+.p-datepicker-month {
+  pointer-events: none;
+}
+
+/* https://www.freecodecamp.org/news/css-only-pie-chart/ */
+@property --p {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.pie {
+  --p: 20;
+  --b: 22px;
+  --c: darkred;
+  --w: 150px;
+
+  width: var(--w);
+  aspect-ratio: 1;
+  position: relative;
+  display: inline-grid;
+  margin: 5px;
+  place-content: center;
+  /* font-size:25px; */
+  font-weight: bold;
+  font-family: sans-serif;
+}
+.pie:before,
+.pie:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+.pie:before {
+  inset: 0;
+  background: radial-gradient(farthest-side, var(--c) 98%, #0000) top/var(--b)
+      var(--b) no-repeat,
+    conic-gradient(var(--c) calc(var(--p) * 1%), #0000 0);
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    #0000 calc(99% - var(--b)),
+    #000 calc(100% - var(--b))
+  );
+  mask: radial-gradient(
+    farthest-side,
+    #0000 calc(99% - var(--b)),
+    #000 calc(100% - var(--b))
+  );
+}
+.pie:after {
+  inset: calc(50% - var(--b) / 2);
+  background: var(--c);
+  transform: rotate(calc(var(--p) * 3.6deg))
+    translateY(calc(50% - var(--w) / 2));
+}
+.animate {
+  animation: p 1s 0.5s both;
+}
+.no-round:before {
+  background-size: 0 0, auto;
+}
+.no-round:after {
+  content: none;
+}
+@keyframes p {
+  from {
+    --p: 0;
+  }
+}
+
+body {
+  background: #f2f2f2;
+}
+
+/* TabViewDemo.css */
+
+.tabview-demo .tabview-header-icon i,
+.tabview-demo .tabview-header-icon span {
+  vertical-align: middle;
+}
+
+.tabview-demo .tabview-header-icon span {
+  margin: 0 0.5rem;
+}
+
+.tabview-demo .p-tabview p {
+  line-height: 1.5;
+  margin: 0;
+}
+
+.p-tabview-nav-link {
+  background-color: rgb(20 184 166 / var(--tw-bg-opacity));
+  color: white;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.p-tabview-nav-link:hover {
+  background-color: plum;
+}
+
+/* .p-tabview-nav-link:active,
+.p-tabview-nav-link:focus  {
+  background-color: palevioletred; 
+} */
+
+.p-unselectable-text {
+  margin: 0px 4px;
+}
+
+/* General style for all tab buttons */
+.p-tabview-nav li a {
+  color: #ffffff !important; /* Same font color for all tabs */
+}
+
+/* Specific background colors for each tab */
+.lpr-session > a {
+  background-color: #0366d1 !important; /* Red background for the first tab */
+}
+
+.paid-session a {
+  background-color: #ccae03 !important; /* Green background for the second tab */
+}
+
+.non-violation > a {
+  background-color: #008700 !important; /* Blue background for the third tab */
+}
+
+.violation > a {
+  background-color: #ff0000 !important; /* Green background for the second tab */
+}
+
+.lpr-error > a {
+  background-color: #ff8800 !important; /* Blue background for the third tab */
+}
+
+.p-tabview-nav li a.active {
+  background-color: #ffff00 !important; /* Yellow background for the active tab */
+}
+
+.recent-violations a {
+  background-color: #0366d1 !important;
+}
+
+.due-violations > a {
+  background-color: #ccae03 !important;
+}
+
+.overdue-violations > a {
+  background-color: #ff0000 !important;
+}
+
+.resolved-violations > a {
+  background-color: #008700 !important;
+}
+
+.permits-tab > a {
+  background-color: #0366d1 !important;
+}
+
+.validations-tab > a {
+  background-color: #ff0000 !important;
+}
+
+.mistake-violations > a {
+  background-color: #ff8800 !important;
+}
+
+/* Add more styles for additional tabs as needed */
+
+.temp_pdf {
+  color: blue;
+  text-align: center;
+}
+.temp_pdf:hover {
+  color: red;
+}
+
+.violation_status {
+  color: red;
+}
+
+#content-to-print {
+  width: 222mm;
+  height: 297mm;
+  padding: 5mm 10mm;
+}
+
+.p-multiselect {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  transition: "background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s";
+  border-radius: 6px;
+  outline-color: transparent;
+}
+
+.p-multiselect-filter-container .p-inputtext {
+  font-family: var(--font-family);
+  font-feature-settings: var(--font-feature-settings, normal);
+  font-size: 1rem;
+  color: #4b5563;
+  background: #ffffff;
+  padding: 0.35rem 0.35rem;
+  border: 1px solid #d1d5db;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  appearance: none;
+  border-radius: 6px;
+  outline-color: transparent;
+}
+
+.p-multiselect-select-all
+  .p-checkbox:not(.p-disabled):has(.p-checkbox-input:hover).p-highlight
+  .p-checkbox-box {
+  border-color: #0e7490;
+  background: #0e7490;
+  color: #ffffff;
+}
+
+.p-multiselect-select-all .p-checkbox .p-checkbox-box {
+  border: 2px solid #d1d5db;
+  width: 22px;
+  height: 22px;
+  color: #4b5563;
+  border-radius: 6px;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  outline-color: transparent;
+}
+
+.p-datatable .p-datatable-tbody > tr.p-highlight {
+  background: #bddee2;
+  color: #000000;
+  font-weight: bold;
+}
+
+.validation-qrcode .p-dialog-content {
+  padding: 0;
+}
+
+.p-dropdown-item-label {
+  width: 100%;
+}

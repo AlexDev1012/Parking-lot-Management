@@ -1,0 +1,41 @@
+name: React CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: ${{ secrets.NODE_VERSION }}
+  VITE_API_PUBLIC_URL: ${{ secrets.VITE_API_PUBLIC_URL }}
+  VITE_API_BACKEND_URL: ${{ secrets.VITE_API_BACKEND_URL }}
+  VITE_API_SENDER_URL: ${{ secrets.VITE_API_SENDER_URL }}
+  VITE_SOCKET_URL: ${{ secrets.VITE_SOCKET_URL }}
+  VITE_SECRET_KEY: ${{ secrets.VITE_SECRET_KEY }}
+
+jobs:
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy to EC2
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.EC2_HOST }}
+          REMOTE_USER: Administrator
+          REMOTE_PORT: 22
+          SCRIPT_BEFORE: |
+            cd /d C:\Users\Administrator\Downloads\park-city-lot\Dashboard-Frontend || exit 1
+            git pull origin main || exit 1
+          SCRIPT_AFTER: |
+            cd /d C:\Users\Administrator\Downloads\park-city-lot\Dashboard-Frontend || exit 1
+            call npm install --force || exit 1
+            call npm run build || exit 1
+            IF %ERRORLEVEL% NEQ 0 (
+              echo "Build failed"
+              exit 1
+            )
