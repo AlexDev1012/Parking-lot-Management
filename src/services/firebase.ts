@@ -8,13 +8,13 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  // apiKey: "",
-  // authDomain: "cpmdashboard-92155.firebaseapp.com",
-  // projectId: "cpmdashboard-92155",
-  // storageBucket: "cpmdashboard-92155.appspot.com",
-  // messagingSenderId: "845798661219",
-  // appId: "1:845798661219:web:1977c00178c9a87942ac56",
-  // measurementId: "G-TM46Q5WF8S",
+  apiKey: "AIzaSyDuVwU-iSzOYjYgAVo1hqhUrYuFGo-q3hs",
+  authDomain: "citypark-9b7f2.firebaseapp.com",
+  projectId: "citypark-9b7f2",
+  storageBucket: "citypark-9b7f2.firebasestorage.app",
+  messagingSenderId: "186912512039",
+  appId: "1:186912512039:web:2c5f9009f2ee84e576d602",
+  measurementId: "G-G9CN6TZP6H"
 };
 
 if (!getApps().length) {
